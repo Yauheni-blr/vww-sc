@@ -14,8 +14,16 @@ ul {
   padding: 0;
 }
 
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+}
+
 .main__body {
   display: flex;
+  flex: 1;
 }
 
 .main__body__instruction {
