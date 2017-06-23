@@ -5,44 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Vistula Student SuperStatistics</title>
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/body.css">
-  <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/footer.css">
+
+  <!--Lib-->
+  <script src="src/lib/render.js"></script>
+
+  <!--Style-->
+  <link rel="stylesheet" href="src/components/App.css">
+  <link rel="stylesheet" href="src/components/Header/Header.css">
+  <link rel="stylesheet" href="src/components/Body/Body.css">
+  <link rel="stylesheet" href="src/components/Footer/Footer.css">
+
+  <!--Component-->
+  <script src="src/components/App.js"></script>
+  <script src="src/components/Header/Header.js"></script>
+  <script src="src/components/Body/Body.js"></script>
+  <script src="src/components/Footer/Footer.js"></script>
+
 </head>
 <body>
-  <div class="main">
-    <div class="main__header">
-      <div class="main__header__logo">
-        <span class="main__header__logo-item">
-          project name
-        </span>
-      </div>
-
-      <div class="main__header__auth">
-        <button class="main__header__auth-item">
-          Log in
-        </button>
-      </div>
-    </div>
-
-
-    <div class="main__body">
-      <div class="main__body__instruction">
-        <iframe width="560"
-                height="315"
-                src="https://www.youtube.com/embed/gCcx85zbxz4"
-                frameborder="0"
-                allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-
-    <div class="main__footer">
-      <span>&copy; by three happy students</span>
-    </div>
-  </div>
-
-  <script src="js/main.js"></script>
+  <div class="main"></div>
+  <script src="src/index.js"></script>
 </body>
 </html>
