@@ -8,9 +8,14 @@ const Header = (props) =>
       </div>
 
       <div class="main__header__auth">
-        <button class="main__header__auth-item">
+        <button class="main__header__auth-item" onClick="handleClick()">
           Log in
         </button>
       </div>
     </div>
   `
+
+
+function handleClick() {
+  initModal()
+}
