@@ -6,14 +6,11 @@ import { Footer } from './Footer/Footer'
 
 import './App.css'
 
-
 class App extends Component {
   render() {
     return (
       <div className="app">
-        <Header
-          projectName="Super Puper Duper Project"
-        />
+        <Header />
         
         <Body
           url="https://www.youtube.com/embed/gCcx85zbxz4"
