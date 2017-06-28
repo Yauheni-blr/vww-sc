@@ -1,4 +1,4 @@
-.main__header {
+.app__header {
   background-color: #005359;
   display: flex;
   padding: 20px 40px;
@@ -7,18 +7,18 @@
   box-shadow: 0 0 29px 0 rgba(0,0,0,0.6);
 }
 
-.main__header__logo-item {
+.app__header__logo-item {
   letter-spacing: 2px;
   font-family: monospace;
   font-weight: lighter;
   font-size: 22px;
 }
 
-.main__header__auth {
+.app__header__auth {
   margin-left: auto;
 }
 
-.main__header__auth-item {
+.app__header__auth-item {
   background-color: #005359;
   border: 2px solid #ffffff;
   color: #ffffff;
@@ -28,7 +28,7 @@
   cursor: pointer;
 }
 
-.main__header__auth-item:hover {
+.app__header__auth-item:hover {
   color: #005359;
   background-color: #ffffff;
   border-color: #005359;
