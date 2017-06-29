@@ -3,14 +3,22 @@ import { observable, action } from 'mobx'
 class AppStore {
   @observable showLoginModal
   @observable projectName
-
+    
   constructor() {
-    this.showLoginModal = false
-    this.projectName = 'Cool Project'
+    this.showLoginModal = {
+      status: false,
+      addStyle: {}
+    }
+    this.projectName = "cool project"
   }
 
-  @action setShowLoginModal(value = false) {
-    this.showLoginModal = value
+  @action setShowLoginModal(status = false, styleKey = null, styleValue = null) {
+    this.showLoginModal = {
+      status,
+      addStyle: {
+        [styleKey]: styleValue
+      }
+    }
   }
 
   @action setProjectName(value) {
@@ -19,4 +27,3 @@ class AppStore {
 }
 
 export default new AppStore()
- 
