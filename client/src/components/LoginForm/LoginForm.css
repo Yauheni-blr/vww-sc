@@ -1,0 +1,60 @@
+.authModal{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px;
+  padding: 50px;
+  margin: auto;
+  background-color: #005359;
+  color: #909090;
+  letter-spacing: 2px;
+  font-family: monospace;
+  font-weight: lighter;
+  font-size: 22px;
+}
+
+.authModal__header {
+  justify-content: center;
+  display: flex;
+  color: #ffffff;
+  border-bottom: 1px solid #ffffff;
+}
+
+.authModal__body{
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+
+.authModal__login__email {
+  padding: 10px 20px;
+  border: 1px solid #ffffff;
+
+}
+
+.authModal__login__password {
+  padding: 10px 20px;
+  border: 1px solid #ffffff;
+}
+
+.authModal__forgot-account {
+  font-size: 13px;
+  font-family: arial;
+  color: #00adb9;
+  padding: 5px 3px;
+}
+
+.authModal__login__button {
+  background-color: #005359;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  padding: 10px 10px;
+  font-size: 18px;
+  transition: all .3s;
+  cursor: pointer;
+}
+.authModal__login__button:hover {
+  color: #005359;
+  background-color: #ffffff;
+  border-color: #005359;
+}
