@@ -30,6 +30,6 @@ export default class Header extends Component {
   }
 
   handleClick() {
-    this.props.app.setShowLoginModal(true, 'filter', 'blur(12px')
+    this.props.app.setShowLoginModal(true, 'filter', 'blur(12px)')
   }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import DevTools from 'mobx-react-devtools'
 
 import Header from './Header/Header'
 import Body from './Body/Body'
@@ -16,20 +17,17 @@ class App extends Component {
       <div>
         <div className="app" style={{ ...this.props.app.showLoginModal.addStyle }}>
           <Header />
-
-          <Body
-            url="https://www.youtube.com/embed/gCcx85zbxz4"
-          />
-          
+          <Body url="https://www.youtube.com/embed/gCcx85zbxz4" />
           <Footer />
-
-         
         </div>
+
          {
             this.props.app.showLoginModal.status
               ? <Modal />
               : null
           }
+
+          <DevTools />
       </div>
     );
   }
