@@ -13,6 +13,7 @@ import './index.css'
 const store = {
   app: AppStore
 }
+
 mobxUseStrict(true)
 
 ReactDOM.render(

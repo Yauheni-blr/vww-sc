@@ -1,0 +1,23 @@
+.authModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.authModal__bg {
+  position: inherit;
+  height: 100%;
+  width: 100%;
+}
+
+.authModal__content {
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}

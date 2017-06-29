@@ -1,25 +1,29 @@
 import { observable, action } from 'mobx'
 
-import Config from '../Config'
+class AppStore {
+  @observable showLoginModal
+  @observable projectName
 
-class AppStore extends Config {
-    @observable showLoginModal
-    @observable projectName
-
-
-    constructor() {
-      super()
-      this.showLoginModal = false
-      this.projectName = 'Cool Project'
+  constructor() {
+    this.showLoginModal = {
+      status: false,
+      addStyle: {}
     }
+    this.projectName = "cool project"
+  }
 
-    @action setShowLoginModal(value = false) {
-      this.showLoginModal = value
+  @action setShowLoginModal(status = false, styleKey = null, styleValue = null) {
+    this.showLoginModal = {
+      status,
+      addStyle: {
+        [styleKey]: styleValue
+      }
     }
+  }
 
-    @action setProjectName(value) {
-      this.projectName = value
-    }
-
+  @action setProjectName(value) {
+    this.projectName = value
+  }
 }
+
 export default new AppStore()
