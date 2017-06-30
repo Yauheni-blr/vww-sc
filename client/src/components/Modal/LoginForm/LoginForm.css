@@ -1,48 +1,3 @@
-.authModal__content__login {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: #cfcfcf;
-  width: 100%;
-}
-
-.authModal__content__login__header {
-  justify-content: center;
-  display: flex;
-  color: #ffffff;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #ffffff;
-  padding: 15px;
-  background-color: #005359;
-}
-
-.authModal__content__login__header-title {
-  font-size: 30px;
-}
-
-.authModal__content__login__body {
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-  border-left: 1px solid rgba(0, 83, 89, 0.37);
-  border-right: 1px solid rgba(0, 83, 89, 0.37);
-}
-
-.authModal__content__login__body__item {
-  display: flex;
-  flex-direction: column;
-  margin: 10px 0;
-}
-
-.authModal__content__login__body__item-field {
-  padding: 10px 20px;
-  border: 1px solid #ffffff;
-}
-
-.authModal__content__login__body__item__block {
-  text-align: right;
-}
-
 .authModal__content__login__body__item__block-link {
   font-size: 13px;
   color: #00adb9;
@@ -50,39 +5,5 @@
 }
 
 .authModal__content__login__body__item__block-link:hover {
-  color: #ffffff;
-}
-
-.authModal__content__login__body__item-button {
-  background-color: #005359;
-  border: 1px solid #ffffff;
-  color: #ffffff;
-  padding: 10px 10px;
-  font-size: 18px;
-  transition: all .3s;
-  cursor: pointer;
-}
-.authModal__content__login__body__item-button:hover {
-  background-color: #017881;
-  border-color: transparent;
-}
-
-.authModal__content__login__footer {
-  justify-content: center;
-  display: flex;
-  color: #ffffff;
-  border-top: 1px solid #ffffff;
-  padding: 15px;
-  background-color: #005359;
-}
-
-.authModal__content__login__footer-title {
-  font-size: 15px;
-  color: #00adb9;
-  transition: color .3s;
-  text-decoration: none;
-}
-
-.authModal__content__login__footer-title:hover {
   color: #ffffff;
 }

@@ -4,38 +4,26 @@ class AppStore {
   @observable showLoginModal
   @observable showRegistrationModal
   @observable projectName
+  @observable showLogRegModal
 
   constructor() {
-    this.showLoginModal = {
+    this.showLogRegModal = {
       status: false,
-      addStyle: {}
-    }
-    this.showRegistrationModal = {
-      status: true,
+      showCase: true, // true: SignIn | false: SignUp
       addStyle: {}
     }
     this.projectName = "cool project"
   }
 
-  @action setShowLoginModal(status = false, styleKey = null, styleValue = null) {
-    this.showLoginModal = {
-      status,
-      addStyle: {
-        [styleKey]: styleValue
-      }
-    }
+  @action setShowLogRegModal(obj) {
+    this.showLogRegModal = Object.assign({},
+      {
+        status: obj.status || this.showLogRegModal.status,
+        showCase: obj.showCase || this.showLogRegModal.showCase,
+        addStyle: obj.addStyle || this.showLogRegModal.addStyle
+      },
+    obj)
   }
-
-  @action setShowRegistrationModal(status = false, styleKey = null, styleValue = null) {
-    this.showRegistrationModal = {
-      status,
-      addStyle: {
-        [styleKey]: styleValue
-      }
-    }
-  }
-
-
 
   @action setProjectName(value) {
     this.projectName = value
