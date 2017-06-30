@@ -28,7 +28,7 @@ export default class LoginForm extends Component {
 
         <div className="authModal__content__login__body">
           <div className="authModal__content__login__body__item">
-            <label>Login:</label>
+            <label>E-mail:</label>
             <input
               className="authModal__content__login__body__item-field"
               type="email"
