@@ -28,7 +28,7 @@ export default class LoginForm extends Component {
 
         <div className="authModal__content__login__body">
           <div className="authModal__content__login__body__item">
-            <label>E-mail:</label>
+            <label>E-mail</label>
             <input
               className="authModal__content__login__body__item-field"
               type="email"
@@ -40,7 +40,7 @@ export default class LoginForm extends Component {
           </div>
 
           <div className="authModal__content__login__body__item">
-            <label>Password:</label>
+            <label>Password</label>
             <input
               className="authModal__content__login__body__item-field"
               type="password"
@@ -69,12 +69,9 @@ export default class LoginForm extends Component {
           </div>
         </div>
         <div className="authModal__content__login__footer">
-          <a
-            href=""
-            className="authModal__content__login__footer-title"
-          >
+          <button className="authModal__content__login__footer-button">
             or sign up your account
-          </a>
+          </button>
         </div>
       </div>
     )
