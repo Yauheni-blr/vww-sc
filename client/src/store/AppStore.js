@@ -3,7 +3,7 @@ import { observable, action } from 'mobx'
 class AppStore {
   @observable showLoginModal
   @observable projectName
-    
+
   constructor() {
     this.showLoginModal = {
       status: false,
