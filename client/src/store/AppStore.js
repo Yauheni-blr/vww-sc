@@ -4,7 +4,7 @@ class AppStore {
   @observable showLoginModal
   @observable showRegistrationModal
   @observable projectName
-    
+
   constructor() {
     this.showLoginModal = {
       status: false,

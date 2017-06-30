@@ -16,8 +16,10 @@
 }
 
 .authModal__content {
-  background-color: #f7f7f7;
+  background-color: rgba(0, 83, 89, 0.35);
   display: flex;
   justify-content: center;
   position: relative;
+  width: 400px;
+  box-shadow: 0 0 29px 0 rgba(0,0,0,0.6);
 }
