@@ -2,11 +2,16 @@ import { observable, action } from 'mobx'
 
 class AppStore {
   @observable showLoginModal
+  @observable showRegistrationModal
   @observable projectName
     
   constructor() {
     this.showLoginModal = {
       status: false,
+      addStyle: {}
+    }
+    this.showRegistrationModal = {
+      status: true,
       addStyle: {}
     }
     this.projectName = "cool project"
@@ -20,6 +25,17 @@ class AppStore {
       }
     }
   }
+
+  @action setShowRegistrationModal(status = false, styleKey = null, styleValue = null) {
+    this.showRegistrationModal = {
+      status,
+      addStyle: {
+        [styleKey]: styleValue
+      }
+    }
+  }
+
+
 
   @action setProjectName(value) {
     this.projectName = value

@@ -21,7 +21,7 @@ class App extends Component {
           <Footer />
         </div>
 
-         {
+          {
             this.props.app.showLoginModal.status
               ? <Modal />
               : null
