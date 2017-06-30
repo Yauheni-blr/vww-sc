@@ -15,14 +15,14 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div className="app" style={{ ...this.props.app.showLoginModal.addStyle }}>
+        <div className="app" style={{ ...this.props.app.showLogRegModal.addStyle }}>
           <Header />
           <Body url="https://www.youtube.com/embed/gCcx85zbxz4" />
           <Footer />
         </div>
 
-         {
-            this.props.app.showLoginModal.status
+          {
+            this.props.app.showLogRegModal.status
               ? <Modal />
               : null
           }

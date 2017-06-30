@@ -14,23 +14,24 @@ export default class LoginForm extends Component {
       passInput: ''
     }
 
-    this.handleClick = this.handleClick.bind(this)
+    this.handleLogInClick = this.handleLogInClick.bind(this)
+    this.handleChangeForm = this.handleChangeForm.bind(this)
   }
 
   render() {
     return(
-      <div className="authModal__content__login">
-        <div className="authModal__content__login__header">
-          <span className="authModal__content__login__header-title">
+      <div className="authModal__content__form">
+        <div className="authModal__content__form__header">
+          <span className="authModal__content__form__header-title">
             Log in
           </span>
         </div>
 
-        <div className="authModal__content__login__body">
-          <div className="authModal__content__login__body__item">
-            <label>E-mail</label>
+        <div className="authModal__content__form__body">
+          <div className="authModal__content__form__body__item">
+            <label>E-mail:</label>
             <input
-              className="authModal__content__login__body__item-field"
+              className="authModal__content__form__body__item-field"
               type="email"
               name="login__email"
               value={this.state.emailInput}
@@ -39,10 +40,10 @@ export default class LoginForm extends Component {
             />
           </div>
 
-          <div className="authModal__content__login__body__item">
-            <label>Password</label>
+          <div className="authModal__content__form__body__item">
+            <label>Password:</label>
             <input
-              className="authModal__content__login__body__item-field"
+              className="authModal__content__form__body__item-field"
               type="password"
               name="login__password"
               value={this.state.passInput}
@@ -51,33 +52,36 @@ export default class LoginForm extends Component {
             />
           </div>
 
-          <div className="authModal__content__login__body__item">
-            <div className="authModal__content__login__body__item__block">
-              <a className="authModal__content__login__body__item__block-link" href="">
+          <div className="authModal__content__form__body__item">
+            <div className="authModal__content__form__body__item__block">
+              <a className="authModal__content__form__body__item__block-link" href="">
                 Forgot account?
               </a>
             </div>
           </div>
 
-          <div className="authModal__content__login__body__item">
+          <div className="authModal__content__form__body__item">
             <button
-              className="authModal__content__login__body__item-button"
-              onClick={this.handleClick}
+              className="authModal__content__form__body__item-button"
+              onClick={this.handleLogInClick}
             >
               Log in
             </button>
           </div>
         </div>
-        <div className="authModal__content__login__footer">
-          <button className="authModal__content__login__footer-button">
-            or sign up your account
+        <div className="authModal__content__form__footer">
+          <button
+            className="authModal__content__form__footer-button"
+            onClick={this.handleChangeForm}
+          >
+            Or Sign Up your Account
           </button>
         </div>
       </div>
     )
   }
 
-  handleClick() {
+  handleLogInClick() {
     const url = `${this.props.app.ORIGIN}/auth`
 
     const requestBody = {
@@ -89,5 +93,9 @@ export default class LoginForm extends Component {
       .post(url, requestBody)
       .then(x => console.log(x.data))
       .catch(err => console.log(err))
+  }
+
+  handleChangeForm() {
+    this.props.app.setShowLogRegModal({ showCase: false })
   }
 }
