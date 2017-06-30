@@ -1,9 +1,9 @@
-.authModal__content__login__body__item__block-link {
+.authModal__content__form__body__item__block-link {
   font-size: 13px;
   color: #00adb9;
   transition: color .3s;
 }
 
-.authModal__content__login__body__item__block-link:hover {
+.authModal__content__form__body__item__block-link:hover {
   color: #ffffff;
 }

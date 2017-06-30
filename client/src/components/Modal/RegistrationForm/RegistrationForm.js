@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
+import axios from 'axios'
 
 import './RegistrationForm.css'
 
@@ -9,11 +10,16 @@ export default class RegistrationForm extends Component {
     super(props)
     
     this.state = {
-      department: 'IT',
+      name: '',
+      surname: '',
+      email: '',
+      password: '',
+      department: 'IT'
     }
 
-    this.handleClick = this.handleClick.bind(this)
+    this.handleChangeForm = this.handleChangeForm.bind(this)
     this.handleChangeSelection = this.handleChangeSelection.bind(this)
+    this.handleRegistr = this.handleRegistr.bind(this)
   }
 
   render() {
@@ -49,6 +55,7 @@ export default class RegistrationForm extends Component {
               className="authModal__content__form__body__item-field"
               type="text" 
               placeholder="Your name"
+              onChange={x => this.setState({name: x.target.value})}
             />
           </div> 
 
@@ -58,6 +65,7 @@ export default class RegistrationForm extends Component {
               className="authModal__content__form__body__item-field"
               type="text" 
               placeholder="Your surname"
+              onChange={x => this.setState({surname: x.target.value})}
             />
           </div>
 
@@ -67,6 +75,7 @@ export default class RegistrationForm extends Component {
               className="authModal__content__form__body__item-field"
               type="email" 
               placeholder="Your email"
+              onChange={x => this.setState({email: x.target.value})}
             />
           </div>
 
@@ -75,7 +84,7 @@ export default class RegistrationForm extends Component {
             <select
               className="authModal__content__form__body__item-select"
               value={this.state.department}
-              onChange={this.handleChangeSelection}
+              onChange={x => this.setState({department: x.target.value})}
             >
               <option value="IT">Computer Science</option>
               <option value="Management">Management</option>
@@ -89,6 +98,7 @@ export default class RegistrationForm extends Component {
               className="authModal__content__form__body__item-field"
               type="password" 
               placeholder="Your password"
+              onChange={x => this.setState({password: x.target.value})}
             />
           </div>
 
@@ -98,20 +108,27 @@ export default class RegistrationForm extends Component {
               className="authModal__content__form__body__item-field"
               type="password" 
               placeholder="Your password"
+              onChange={x => this.setState({rPassword: x.target.value})}
             />
           </div>
 
           <div className="authModal__content__form__body__item">
-            <button className="authModal__content__form__body__item-button">
+            <button
+              className="authModal__content__form__body__item-button"
+              onClick={this.handleRegistr}
+            >
               Sign Up
             </button>
           </div>
         </div>
 
         <div className="authModal__content__form__footer">
-          <a onClick={this.handleClick}>
+          <button
+            className="authModal__content__form__footer-button"
+            onClick={this.handleChangeForm}
+          >
             back to Log In
-          </a>
+          </button>
         </div>
       </div>
     )
@@ -121,7 +138,29 @@ export default class RegistrationForm extends Component {
     this.setState({department: e.target.value})
   }
 
-  handleClick() {
+  handleChangeForm() {
+    this.props.app.setShowLogRegModal({ showCase: true })
+  }
+
+  handleRegistr() {
+    const url = `${this.props.app.ORIGIN}/user`
+    console.log(url)
+
+    const user = {
+      name: this.state.name,
+      surname: this.state.surname,
+      email: this.state.email,
+      department: this.state.department,
+      password: this.state.password === this.state.rPassword ? this.state.password : ''
+    }
+
+    if ([user.name, user.surname, user.email, user.department, user.password].every(x => x.length > 0))
+      axios
+        .post(url, user)
+        .then(x => console.log(x.data))
+        .catch(err => console.log(err))
+    else
+      console.log('Please fill all inputs')
     
   }
 }

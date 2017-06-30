@@ -7,14 +7,7 @@ var bodyParser = require('body-parser')
 app.use(cors())
 app.use(bodyParser.json())
 
-var users = [
-  {
-  	"name": "Roman",
-  	"surname": "Nahornyi",
-  	"email": "promacold@gmail.com",
-  	"password": "228"
-  }
-];
+var users = [];
 
 app.get('/', rootHandler)
 app.get('/user', userHandler)
@@ -60,6 +53,7 @@ function createUser(req, res) {
       surname: req.body.surname,
       email: req.body.email,
       password: req.body.password,
+      department: req.body.department
     })
 
     res.send('Successfuly created')

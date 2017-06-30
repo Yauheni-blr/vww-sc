@@ -71,7 +71,7 @@ export default class LoginForm extends Component {
         </div>
         <div className="authModal__content__form__footer">
           <button
-            className="authModal__content__form__footer-title"
+            className="authModal__content__form__footer-button"
             onClick={this.handleChangeForm}
           >
             Or Sign Up your Account
