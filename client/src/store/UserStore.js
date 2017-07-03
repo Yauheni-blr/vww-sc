@@ -1,4 +1,5 @@
 import { observable, action, computed } from 'mobx'
+import axios from 'axios'
 
 class UserStore {
   @observable data
@@ -9,6 +10,16 @@ class UserStore {
 
   @action changeUserData(user) {
     this.data = Object.assign({}, this.data, user)
+  }
+
+  @action loginUser(url, body) {
+    return axios
+      .post(url, body)
+      .then(x => {
+        this.changeUserData(x.data)
+        return x.data.email ? true : false
+      })
+      .catch(err => console.log(err))
   }
 
   @action resetUser() {

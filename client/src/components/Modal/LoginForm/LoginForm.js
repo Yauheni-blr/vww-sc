@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios'
 import { inject, observer } from 'mobx-react'
 
 import './LoginForm.css';
@@ -99,18 +98,23 @@ export default class LoginForm extends Component {
       password: this.state.passInput
     }
 
-    axios
-      .post(url, requestBody)
-      .then(x => {
-        if (!x.data.error) {
-          this.props.user.changeUserData(x.data)
-          this.props.app.setShowLogRegModal({ status: false, addStyle: {filter: 'none'} })
-          this.props.app.setError('login', '')
-        } else {
-          this.props.app.setError('login', x.data.error)
-        }
-      })
-      .catch(err => console.log(err))
+    const self = this;
+
+    const otvet = new Promise((resolve, reject) => {
+      resolve(self.props.user.loginUser(url, requestBody))
+    })
+
+    otvet.then(function(value) {
+      if (value)
+        self.props.app.setShowLogRegModal({
+          status: false,
+          addStyle: {
+            filter: 'none'
+          }
+        })
+    })
+
+        
   }
 
   handleChangeForm() {

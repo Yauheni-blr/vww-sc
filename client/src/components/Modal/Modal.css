@@ -64,7 +64,10 @@
   padding: 10px 20px;
   border: 1px solid #ffffff;
   border-radius: 5px;
+  outline: none;
 }
+
+
 
 .authModal__content__form__body__item__block {
   text-align: right;

@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import './RegistrationForm.css'
 
-@inject('app') @observer
+@inject('app', 'user') @observer
 export default class RegistrationForm extends Component {
   constructor(props) {
     super(props)
@@ -137,6 +137,8 @@ export default class RegistrationForm extends Component {
   handleChangeSelection(e) {
     this.setState({department: e.target.value})
   }
+
+
 
   handleChangeForm() {
     this.props.app.setShowLogRegModal({ showCase: true })
