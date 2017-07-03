@@ -112,9 +112,14 @@ function authUser(req, res) {
   }
 
   if(userIndex >= 0) {
-    console.log('User Successfuly received');
-    res.send(users[userIndex])
+    console.log('User Successfuly authorized');
+    res.status(200).send({
+      name: users[userIndex].name,
+      surname: users[userIndex].surname,
+      email: users[userIndex].email,
+      department: users[userIndex].department
+    })
   } else {
-    res.send('Something wrong =)')
+    res.status(200).send({error: 'Something wrong =)'})
   }
 }

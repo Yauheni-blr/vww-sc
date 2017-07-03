@@ -7,11 +7,13 @@ import { useStrict as mobxUseStrict } from 'mobx'
 import App from './components/App'
 
 import AppStore from './store/AppStore'
+import UserStore from './store/UserStore'
 
 import './index.css'
 
 const store = {
-  app: AppStore
+  app: AppStore,
+  user: UserStore
 }
 
 mobxUseStrict(true)

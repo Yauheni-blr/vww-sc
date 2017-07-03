@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import { inject } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 
 import './LoginForm.css';
 
-@inject('app')
+@inject('app', 'user') @observer
 export default class LoginForm extends Component {
   constructor(props) {
     super(props)
@@ -26,6 +26,16 @@ export default class LoginForm extends Component {
             Log in
           </span>
         </div>
+
+          {
+            this.props.app.error.login
+              ? <div>
+                  <p>
+                    {this.props.app.error.login}  
+                  </p>
+                </div>
+              : null
+          }
 
         <div className="authModal__content__form__body">
           <div className="authModal__content__form__body__item">
@@ -91,7 +101,15 @@ export default class LoginForm extends Component {
 
     axios
       .post(url, requestBody)
-      .then(x => console.log(x.data))
+      .then(x => {
+        if (!x.data.error) {
+          this.props.user.changeUserData(x.data)
+          this.props.app.setShowLogRegModal({ status: false, addStyle: {filter: 'none'} })
+          this.props.app.setError('login', '')
+        } else {
+          this.props.app.setError('login', x.data.error)
+        }
+      })
       .catch(err => console.log(err))
   }
 

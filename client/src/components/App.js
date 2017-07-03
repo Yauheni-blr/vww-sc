@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import DevTools from 'mobx-react-devtools'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 import Header from './Header/Header'
 import Body from './Body/Body'
@@ -14,21 +15,23 @@ import './App.css'
 class App extends Component {
   render() {
     return (
-      <div>
-        <div className="app" style={{ ...this.props.app.showLogRegModal.addStyle }}>
-          <Header />
-          <Body url="https://www.youtube.com/embed/gCcx85zbxz4" />
-          <Footer />
+      <Router>
+        <div>
+          <div className="app" style={{ ...this.props.app.showLogRegModal.addStyle }}>
+            <Header />
+            <Body url="https://www.youtube.com/embed/gCcx85zbxz4" />
+            <Footer />
+          </div>
+
+            {
+              this.props.app.showLogRegModal.status
+                ? <Modal />
+                : null
+            }
+
+            <DevTools />
         </div>
-
-          {
-            this.props.app.showLogRegModal.status
-              ? <Modal />
-              : null
-          }
-
-          <DevTools />
-      </div>
+      </Router>
     );
   }
 }

@@ -144,7 +144,6 @@ export default class RegistrationForm extends Component {
 
   handleRegistr() {
     const url = `${this.props.app.ORIGIN}/user`
-    console.log(url)
 
     const user = {
       name: this.state.name,
@@ -157,7 +156,7 @@ export default class RegistrationForm extends Component {
     if ([user.name, user.surname, user.email, user.department, user.password].every(x => x.length > 0))
       axios
         .post(url, user)
-        .then(x => console.log(x.data))
+        .then(x => console.log(x))
         .catch(err => console.log(err))
     else
       console.log('Please fill all inputs')

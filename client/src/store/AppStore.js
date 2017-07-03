@@ -7,6 +7,7 @@ class AppStore extends Config {
   @observable showRegistrationModal
   @observable projectName
   @observable showLogRegModal
+  @observable error
 
   constructor() {
     super()
@@ -16,6 +17,9 @@ class AppStore extends Config {
       addStyle: {}
     }
     this.projectName = "cool project"
+    this.error = {
+      login: ''
+    }
   }
 
   @action setShowLogRegModal(obj) {
@@ -30,6 +34,10 @@ class AppStore extends Config {
 
   @action setProjectName(value) {
     this.projectName = value
+  }
+
+  @action setError(where, value) {
+    this.error[where] = value
   }
 }
 

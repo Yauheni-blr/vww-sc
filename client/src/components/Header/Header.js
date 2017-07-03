@@ -3,12 +3,13 @@ import { inject, observer } from 'mobx-react'
 
 import './Header.css'
 
-@inject('app') @observer
+@inject('app', 'user') @observer
 export default class Header extends Component {
   constructor(props) {
     super(props)
 
-    this.handleClick = this.handleClick.bind(this)
+    this.handleLogInBtn = this.handleLogInBtn.bind(this)
+    this.handleLogOutBtn = this.handleLogOutBtn.bind(this)
   }
 
   render() {
@@ -20,21 +21,33 @@ export default class Header extends Component {
             </span>
           </div>
 
-          <div className="app__header__auth">
-            <button className="app__header__auth-item" onClick={this.handleClick}>
-              Log in
-            </button>
-          </div>
+          {
+            this.props.user.data.email
+              ? <div className="app__header__auth">
+                  <button className="app__header__auth-item" onClick={this.handleLogOutBtn}>
+                    {this.props.user.getFullName}
+                  </button>
+                </div>
+              : <div className="app__header__auth">
+                  <button className="app__header__auth-item" onClick={this.handleLogInBtn}>
+                    Log in
+                  </button>
+                </div>
+          }
         </div>
       )
   }
 
-  handleClick() {
+  handleLogOutBtn() {
+    this.props.user.resetUser()
+  }
+
+  handleLogInBtn() {
     this.props.app.setShowLogRegModal({
       status: true,
       showCase: true,
       addStyle: {
-        filter: 'blur(12px)'
+      filter: 'blur(12px)'
       }
     })
   }
