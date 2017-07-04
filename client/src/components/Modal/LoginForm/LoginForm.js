@@ -91,30 +91,20 @@ export default class LoginForm extends Component {
   }
 
   handleLogInClick() {
-    const url = `${this.props.app.ORIGIN}/auth`
+    const self = this;
+    const url = `${self.props.app.ORIGIN}/auth`
 
     const requestBody = {
-      email: this.state.emailInput,
-      password: this.state.passInput
+      email: self.state.emailInput,
+      password: self.state.passInput
     }
 
-    const self = this;
-
-    const otvet = new Promise((resolve, reject) => {
+    const waitResponse = new Promise((resolve, reject) => {
       resolve(self.props.user.loginUser(url, requestBody))
     })
 
-    otvet.then(function(value) {
-      if (value)
-        self.props.app.setShowLogRegModal({
-          status: false,
-          addStyle: {
-            filter: 'none'
-          }
-        })
-    })
-
-        
+    waitResponse
+      .then(access => self.props.app.closeModal(access))
   }
 
   handleChangeForm() {

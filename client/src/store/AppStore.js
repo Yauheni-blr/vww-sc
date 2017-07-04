@@ -22,6 +22,16 @@ class AppStore extends Config {
     }
   }
 
+  closeModal(value) {
+    if (value)
+      this.setShowLogRegModal({
+        status: false,
+        addStyle: {
+          filter: 'none'
+        }
+      })
+  }
+
   @action setShowLogRegModal(obj) {
     this.showLogRegModal = Object.assign({},
       {

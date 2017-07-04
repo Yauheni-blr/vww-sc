@@ -13,13 +13,23 @@ class UserStore {
   }
 
   @action loginUser(url, body) {
-    return axios
-      .post(url, body)
+    return axios.post(url, body)
       .then(x => {
         this.changeUserData(x.data)
         return x.data.email ? true : false
       })
       .catch(err => console.log(err))
+  }
+
+  @action registrateUser(url, body) {
+    return axios.post(url, body)
+      .then(x =>
+        x.status === 201
+          ? true
+          : false
+      )
+      .catch(err => console.log(err))
+
   }
 
   @action resetUser() {
