@@ -47,7 +47,7 @@ export default class Header extends Component {
       status: true,
       showCase: true,
       addStyle: {
-      filter: 'blur(12px)'
+        filter: 'blur(12px)'
       }
     })
   }

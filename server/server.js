@@ -56,7 +56,8 @@ function createUser(req, res) {
       department: req.body.department
     })
 
-    res.send('Successfuly created')
+    console.log('User successfuly created')
+    res.status(201).send()
   } else {
     res.send('Sorry email already used')
   }

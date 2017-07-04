@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
-import axios from 'axios'
 
 import './RegistrationForm.css'
 
-@inject('app') @observer
+@inject('app', 'user') @observer
 export default class RegistrationForm extends Component {
   constructor(props) {
     super(props)
@@ -143,21 +142,33 @@ export default class RegistrationForm extends Component {
   }
 
   handleRegistr() {
-    const url = `${this.props.app.ORIGIN}/user`
+    const self = this;
+    const registrationUrl = `${self.props.app.ORIGIN}/user`
+    const authUrl = `${self.props.app.ORIGIN}/auth`
 
-    const user = {
-      name: this.state.name,
-      surname: this.state.surname,
-      email: this.state.email,
-      department: this.state.department,
-      password: this.state.password === this.state.rPassword ? this.state.password : ''
+    const requestBody = {
+      name: self.state.name,
+      surname: self.state.surname,
+      email: self.state.email,
+      department: self.state.department,
+      password: self.state.password === self.state.rPassword ? self.state.password : ''
     }
 
-    if ([user.name, user.surname, user.email, user.department, user.password].every(x => x.length > 0))
-      axios
-        .post(url, user)
-        .then(x => console.log(x))
-        .catch(err => console.log(err))
+    const waitResponse = new Promise((resolve, reject) => {
+      resolve(self.props.user.registrateUser(registrationUrl, requestBody))
+    })
+
+    if ([requestBody.name,
+         requestBody.surname,
+         requestBody.email,
+         requestBody.department,
+         requestBody.password]
+          .every(x => x.length > 0))
+      waitResponse
+        .then(data =>
+          self.props.user.loginUser(authUrl, {email: requestBody.email, password: requestBody.password})
+            .then(access => self.props.app.closeModal(access))
+        )
     else
       console.log('Please fill all inputs')
     
