@@ -7,18 +7,14 @@
   box-shadow: 0 0 29px 0 rgba(0,0,0,0.6);
 }
 
-.app__header__logo-item {
+.app__header__menu__primary__list-item__projectName {
   letter-spacing: 2px;
   font-family: monospace;
   font-weight: lighter;
   font-size: 22px;
 }
 
-.app__header__auth {
-  margin-left: auto;
-}
-
-.app__header__auth-item {
+.app__header__menu__auth-item {
   background-color: #005359;
   border: 2px solid #ffffff;
   color: #ffffff;
@@ -28,7 +24,7 @@
   cursor: pointer;
 }
 
-.app__header__auth-item:hover {
+.app__header__menu__auth-item:hover {
   color: #005359;
   background-color: #ffffff;
   border-color: #005359;

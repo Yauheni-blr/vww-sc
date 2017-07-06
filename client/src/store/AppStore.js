@@ -20,6 +20,12 @@ class AppStore extends Config {
     this.error = {
       login: ''
     }
+    this.routes = {
+      myGroups: '/',
+      mySchedule: '/my-schedule',
+      howToUse: '/how-to-use',
+      support: '/support'
+    }
   }
 
   closeModal(value) {
