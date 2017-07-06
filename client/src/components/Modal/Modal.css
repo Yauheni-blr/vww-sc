@@ -17,11 +17,13 @@
 
 .authModal__content {
   background-color: rgba(0, 83, 89, 0.56);
-  display: flex;
-  justify-content: center;
   position: relative;
   width: 400px;
   box-shadow: 0 0 29px 0 rgba(0,0,0,0.6);
+}
+
+.authModal__content-scrollable {
+  overflow-y: scroll;
 }
 
 .authModal__content__form {
@@ -66,8 +68,6 @@
   border-radius: 5px;
   outline: none;
 }
-
-
 
 .authModal__content__form__body__item__block {
   text-align: right;
@@ -126,4 +126,8 @@
   border-right-color: #02ffb7;
   border-left-color: #074a0d;
   border-bottom-color: #074a0d;
+}
+
+.authModal__content-smallScreen {
+  background: red;
 }
