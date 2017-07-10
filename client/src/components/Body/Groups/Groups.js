@@ -9,6 +9,7 @@ import './Groups.css'
 export default class Groups extends Component {
   componentDidMount() {
     this.props.user.getActiveGroups(`${this.props.app.ORIGIN}/`)
+    this.props.app.setCurrentRoute(this.props.location.pathname)
   }
 
   render() {
