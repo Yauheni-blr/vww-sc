@@ -19,7 +19,7 @@ class App extends Component {
         <div>
           <div className="app" style={{ ...this.props.app.showLogRegModal.addStyle }}>
             <Header />
-            <Body url="https://www.youtube.com/embed/gCcx85zbxz4" />
+            <Body />
             <Footer />
           </div>
 
