@@ -6,6 +6,7 @@ import Groups from './Groups/Groups'
 import Schedule from './Schedule/Schedule'
 import HowToUse from './HowToUse/HowToUse'
 import Support from './Support/Support'
+import SingleGroup from './Groups/SingleGroup/SingleGroup'
 
 import './Body.css'
 
@@ -16,9 +17,10 @@ export default class Body extends Component {
       <div className="app__body">
         <div className="app__body__content">
           <Route exact path={this.props.app.routes.myGroups} component={Groups} />
-          <Route exact path={this.props.app.routes.mySchedule} component={Schedule} />
-          <Route exact path={this.props.app.routes.howToUse} component={HowToUse} />
-          <Route exact path={this.props.app.routes.support} component={Support} />
+          <Route path={this.props.app.routes.mySchedule} component={Schedule} />
+          <Route path={this.props.app.routes.howToUse} component={HowToUse} />
+          <Route path={this.props.app.routes.support} component={Support} />
+          <Route path={this.props.app.routes.singleGroup} component={SingleGroup}/> 
         </div>
       </div>
     )

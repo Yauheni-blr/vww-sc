@@ -24,7 +24,8 @@ class AppStore extends Config {
       myGroups: '/',
       mySchedule: '/my-schedule',
       howToUse: '/how-to-use',
-      support: '/support'
+      support: '/support',
+      singleGroup: '/:name'
     }
   }
 

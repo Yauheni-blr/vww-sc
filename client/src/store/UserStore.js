@@ -5,7 +5,8 @@ import LocalStore from './LocalStore'
 
 class UserStore {
   @observable data
-  @observable myGroups
+  @observable listOfGroups
+  @observable singleGroup
 
   constructor() {
     this.data = LocalStore.getUser()
@@ -47,7 +48,17 @@ class UserStore {
   getActiveGroups(url) {
      axios
       .get(url)
-      .then(action(x => this.myGroups = x.data))
+      .then(action(x => this.listOfGroups = x.data))
+  }
+
+  getSingleGroup(url) {
+    axios
+      .get(url)
+      .then(x => this.setSingleGroup(x.data))
+  }
+
+  @action setSingleGroup(group) {
+    this.singleGroup = group
   }
 }
 

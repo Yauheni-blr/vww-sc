@@ -53,6 +53,7 @@ var groupsForTest = [
 ]
 
 app.get('/', getGroups)
+app.get('/:name', getSingleGroup)
 app.get('/user', userHandler)
 app.get('/user/:name', nameHandler)
 
@@ -70,6 +71,13 @@ app.listen(3001, function () {
 
 function getGroups(req, res) {
   res.send(groupsForTest)
+}
+
+function getSingleGroup(req, res) {
+  const unicName = req.params.name
+  const group = groupsForTest.find(group => group.groupName === unicName)
+
+  res.send(group)
 }
 
 function userHandler(req, res) {

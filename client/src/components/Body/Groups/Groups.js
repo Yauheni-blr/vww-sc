@@ -16,8 +16,8 @@ export default class Groups extends Component {
       <div className="app__body__content__groups">
         <ul className="app__body__content__groups__list">
           {
-            this.props.user.myGroups
-              ? this.props.user.myGroups.map((group, i) => 
+            this.props.user.listOfGroups
+              ? this.props.user.listOfGroups.map((group, i) => 
                   <GroupsItem 
                     type={group.type}
                     department={group.department}
@@ -26,7 +26,7 @@ export default class Groups extends Component {
                     key={i}
                   /> 
                 )
-              : <h1>Still no active groups</h1>
+              : null
 
             
           }
