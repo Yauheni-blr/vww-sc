@@ -5,53 +5,10 @@ import LocalStore from './LocalStore'
 
 class UserStore {
   @observable data
+  @observable myGroups
 
   constructor() {
     this.data = LocalStore.getUser()
-    
-    this.myGroups = [
-      { 
-        type: 'groupItem',
-        department: 'Computer Science', 
-        groupName: 'CS-E3SI'
-      },
-      { 
-        type: 'groupItem',
-        department: 'Economics', 
-        groupName: 'ES-S2PI' 
-      },
-      { 
-        type: 'groupItem',
-        department: 'Architecture', 
-        groupName: 'AR-S2PI' 
-      },
-      { 
-        type: 'groupItem',
-        department: 'Tourism and Recreation', 
-        groupName: 'TR-S3EI' 
-      },
-      { 
-        type: 'groupItem',
-        department: 'Computer Science', 
-        groupName: 'CS-E3SI' 
-      },
-      { 
-        type: 'groupItem',
-        department: 'Economics', 
-        groupName: 'ES-S2PI' 
-      },
-      { 
-        type: 'groupItem',
-        department: 'Architecture', 
-        groupName: 'AR-S2PI' 
-      },
-      { 
-        type: 'groupItem',
-        department: 'Tourism and Recreation', 
-        groupName: 'TR-S3EI' 
-      }
-      
-    ]
   }
 
   @action changeUserData(user) {
@@ -85,6 +42,12 @@ class UserStore {
 
   @computed get getFullName() {
     return `${this.data.name} ${this.data.surname}`
+  }
+
+  getActiveGroups(url) {
+     axios
+      .get(url)
+      .then(action(x => this.myGroups = x.data))
   }
 }
 

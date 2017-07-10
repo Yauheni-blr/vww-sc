@@ -9,7 +9,50 @@ app.use(bodyParser.json())
 
 var users = [];
 
-app.get('/', rootHandler)
+var groupsForTest = [
+  { 
+    type: 'groupItem',
+    department: 'Computer Science', 
+    groupName: 'CS-E3SI'
+  },
+  { 
+    type: 'groupItem',
+    department: 'Economics', 
+    groupName: 'ES-S2PI' 
+  },
+  { 
+    type: 'groupItem',
+    department: 'Architecture', 
+    groupName: 'AR-S2PI' 
+  },
+  { 
+    type: 'groupItem',
+    department: 'Tourism and Recreation', 
+    groupName: 'TR-S3EI' 
+  },
+  { 
+    type: 'groupItem',
+    department: 'Computer Science', 
+    groupName: 'CS-E3SI' 
+  },
+  { 
+    type: 'groupItem',
+    department: 'Economics', 
+    groupName: 'ES-S2PI' 
+  },
+  { 
+    type: 'groupItem',
+    department: 'Architecture', 
+    groupName: 'AR-S2PI' 
+  },
+  { 
+    type: 'groupItem',
+    department: 'Tourism and Recreation', 
+    groupName: 'TR-S3EI' 
+  }
+]
+
+app.get('/', getGroups)
 app.get('/user', userHandler)
 app.get('/user/:name', nameHandler)
 
@@ -25,8 +68,8 @@ app.listen(3001, function () {
 })
 
 
-function rootHandler(req, res) {
-  res.send('Hello World')
+function getGroups(req, res) {
+  res.send(groupsForTest)
 }
 
 function userHandler(req, res) {
