@@ -1,0 +1,77 @@
+.app__body__content__support {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 40px
+}
+
+.app__body__content__support__feedbackform {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #f9f9f9;
+}
+
+.app__body__content__support__feedbackform__header {
+  justify-content: center;
+  display: flex;
+  color: #ffffff;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ffffff;
+  padding: 15px;
+  background-color: #005359;
+}
+
+.app__body__content__support__feedbackform__header-title {
+  font-size: 30px;
+}
+
+.app__body__content__support__feedbackform__content {
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(0, 83, 89, 0.56);
+}
+
+.app__body__content__support__feedbackform__content__description {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  width: 400px;
+}
+
+.app__body__content__support__feedbackform__content__description__item {
+  font-size: 17px;
+}
+
+.app__body__content__support__feedbackform__content__feedback {
+  border-left: 1px solid #ffffff;
+  padding: 20px;
+}
+.app__body__content__support__feedbackform__content__feedback__item {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 10px;
+  width: 400px;
+}
+
+.app__body__content__support__feedbackform__content__feedback__item-field {
+  padding: 10px 20px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  outline: none;
+}
+
+.app__body__content__support__feedbackform__content__feedback__item-button {
+  background-color: #005359;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  padding: 10px 10px;
+  font-size: 18px;
+  transition: all .3s;
+  cursor: pointer;
+}
+
+.app__body__content__support__feedbackform__content__feedback__item-button:hover {
+  background-color: #017881;
+  border-color: transparent;
+}
