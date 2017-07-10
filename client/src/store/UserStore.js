@@ -8,6 +8,50 @@ class UserStore {
 
   constructor() {
     this.data = LocalStore.getUser()
+    
+    this.myGroups = [
+      { 
+        type: 'groupItem',
+        department: 'Computer Science', 
+        groupName: 'CS-E3SI'
+      },
+      { 
+        type: 'groupItem',
+        department: 'Economics', 
+        groupName: 'ES-S2PI' 
+      },
+      { 
+        type: 'groupItem',
+        department: 'Architecture', 
+        groupName: 'AR-S2PI' 
+      },
+      { 
+        type: 'groupItem',
+        department: 'Tourism and Recreation', 
+        groupName: 'TR-S3EI' 
+      },
+      { 
+        type: 'groupItem',
+        department: 'Computer Science', 
+        groupName: 'CS-E3SI' 
+      },
+      { 
+        type: 'groupItem',
+        department: 'Economics', 
+        groupName: 'ES-S2PI' 
+      },
+      { 
+        type: 'groupItem',
+        department: 'Architecture', 
+        groupName: 'AR-S2PI' 
+      },
+      { 
+        type: 'groupItem',
+        department: 'Tourism and Recreation', 
+        groupName: 'TR-S3EI' 
+      }
+      
+    ]
   }
 
   @action changeUserData(user) {
