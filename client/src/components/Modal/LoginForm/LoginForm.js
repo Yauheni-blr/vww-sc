@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react'
 
+import { withRouter } from 'react-router-dom' 
+
 import './LoginForm.css';
 
 @inject('app', 'user') @observer
-export default class LoginForm extends Component {
+class LoginForm extends Component {
   constructor(props) {
     super(props)
 
@@ -104,10 +106,15 @@ export default class LoginForm extends Component {
     })
 
     waitResponse
-      .then(access => self.props.app.closeModal(access))
+      .then(access => {
+        self.props.app.closeModal(access)
+        self.props.history.replace('/')
+      })
   }
 
   handleChangeForm() {
     this.props.app.setShowLogRegModal({ showCase: false })
   }
 }
+
+export default withRouter(LoginForm)

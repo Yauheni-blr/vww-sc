@@ -7,14 +7,34 @@ class LocalStore {
       department: ''
     }
     this.user = this.initUser()
+    this.authStatus = this.initAuthStatus()
   }
 
-  setUser(user) {
-    localStorage.setItem('user', JSON.stringify(user))
+  initAuthStatus() {
+    if (this.getAuthStatus())
+      return this.getAuthStatus()
+      
+    localStorage.setItem('authStatus', 'false')
+  }  
+
+  setAuthStatus(status) {
+    localStorage.setItem('authStatus', status)
+  }
+
+  resetAuthStatus() {
+    localStorage.setItem('authStatus', 'false')
+  }
+
+  getAuthStatus() {
+    return JSON.parse(localStorage.getItem('authStatus'))
   }
 
   getUser() {
     return JSON.parse(localStorage.getItem('user'))
+  }
+
+  setUser(user) {
+    localStorage.setItem('user', JSON.stringify(user))
   }
 
   initUser() {

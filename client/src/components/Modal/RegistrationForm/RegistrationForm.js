@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 
+import { withRouter } from 'react-router-dom' 
+
 import './RegistrationForm.css'
 
 @inject('app', 'user') @observer
-export default class RegistrationForm extends Component {
+class RegistrationForm extends Component {
   constructor(props) {
     super(props)
     
@@ -158,19 +160,20 @@ export default class RegistrationForm extends Component {
       resolve(self.props.user.registrateUser(registrationUrl, requestBody))
     })
 
-    if ([requestBody.name,
-         requestBody.surname,
-         requestBody.email,
-         requestBody.department,
-         requestBody.password]
-          .every(x => x.length > 0))
+    if ([requestBody.name, requestBody.surname, requestBody.email,
+         requestBody.department, requestBody.password].every(x => x.length > 0)) {
+
       waitResponse
         .then(data =>
           self.props.user.loginUser(authUrl, {email: requestBody.email, password: requestBody.password})
-            .then(access => self.props.app.closeModal(access))
+            .then(access => {
+              self.props.app.closeModal(access)
+              self.props.history.replace('/')
+            })
         )
-    else
-      console.log('Please fill all inputs')
-    
+    }
+    else console.log('Please fill all inputs')   
   }
 }
+
+export default withRouter(RegistrationForm)

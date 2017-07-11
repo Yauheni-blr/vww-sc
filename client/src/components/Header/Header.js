@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
+import { withRouter } from 'react-router-dom'
 
 import { MenuItem } from './MenuItem/MenuItem'
  
 import './Header.css'
 
 @inject('app', 'user') @observer
-export default class Header extends Component {
+class Header extends Component {
   constructor(props) {
     super(props)
 
@@ -123,6 +124,9 @@ export default class Header extends Component {
 
   handleLogOutBtn() {
     this.props.user.resetUser()
+    this.props.history.go(0)
+    this.props.history.replace('/protected')
+    console.log(this.props.history)
   }
 
   handleLogInBtn() {
@@ -135,3 +139,5 @@ export default class Header extends Component {
     })
   }
 }
+
+export default withRouter(Header)
