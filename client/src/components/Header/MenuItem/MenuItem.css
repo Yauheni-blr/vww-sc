@@ -42,3 +42,7 @@
   border-top: 4px solid #7898f1; 
 }
 
+.app__header__menu__side__list-item__link-active,
+.app__header__menu__primary__list-item__link-active {
+  border-top: 4px solid greenyellow;
+}

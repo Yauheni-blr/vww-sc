@@ -7,9 +7,9 @@ import './LoginForm.css';
 
 @inject('app', 'user') @observer
 class LoginForm extends Component {
-  constructor(props) {
-    super(props)
-
+  constructor() {
+    super()
+    
     this.state = {
       emailInput: '',
       passInput: ''
@@ -27,16 +27,6 @@ class LoginForm extends Component {
             Log in
           </span>
         </div>
-
-          {
-            this.props.app.error.login
-              ? <div>
-                  <p>
-                    {this.props.app.error.login}  
-                  </p>
-                </div>
-              : null
-          }
 
         <div className="authModal__content__form__body">
           <div className="authModal__content__form__body__item">

@@ -3,3 +3,6 @@
   flex: 1;
 }
 
+.app__body__content {
+  width: 100%;
+}

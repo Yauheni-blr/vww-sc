@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom'
 
 import './MenuItem.css'
 
+const classNames = {
+  LINK: 'app__header__menu__side__list-item__link',
+  LINK_ACTIVE: 'app__header__menu__side__list-item__link-active'
+}
+
 export const MenuItem = inject('app', 'user')(observer(props =>
   <li
     className={
@@ -16,7 +21,10 @@ export const MenuItem = inject('app', 'user')(observer(props =>
       props.type === 'menuItem'
         ? props.purpose
             ? <span className={`${props.classPref}-item__projectName-item`}>{props.title}</span>
-            : <Link className={`${props.classPref}-item__link`} to={props.url}>
+            : <Link
+                className={getActiveClass(props.app.currentRoute, props.url, classNames.LINK)}
+                to={props.url}
+              >
                 {props.title}
               </Link>
         : <button className="app__header__menu__auth-item" onClick={props.cb}>
@@ -26,3 +34,8 @@ export const MenuItem = inject('app', 'user')(observer(props =>
   </li>
 ))
 
+const getActiveClass = (currentRoute, route, originalClass) => 
+  currentRoute === route
+    ? [originalClass, classNames.LINK_ACTIVE].join(' ')
+    : originalClass
+  

@@ -8,6 +8,7 @@ class AppStore extends Config {
   @observable projectName
   @observable showLogRegModal
   @observable error
+  @observable currentRoute
 
   constructor() {
     super()
@@ -25,8 +26,10 @@ class AppStore extends Config {
       mySchedule: '/my-schedule',
       howToUse: '/how-to-use',
       support: '/support',
-      protected: '/protected'
+      protected: '/protected',
+      singleGroup: '/:name'
     }
+    this.currentUrl = ''
   }
 
   closeModal(value) {
@@ -55,6 +58,10 @@ class AppStore extends Config {
 
   @action setError(where, value) {
     this.error[where] = value
+  }
+
+  @action setCurrentRoute(value) {
+    this.currentRoute = value
   }
 }
 

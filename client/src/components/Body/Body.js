@@ -7,6 +7,7 @@ import Schedule from './Schedule/Schedule'
 import HowToUse from './HowToUse/HowToUse'
 import Support from './Support/Support'
 import { Protected } from './Protected/Protected'
+import SingleGroup from './Groups/SingleGroup/SingleGroup'
 
 import './Body.css'
 
@@ -37,6 +38,7 @@ export default class Body extends Component {
           <PrivateRoute path={this.props.app.routes.mySchedule} access={authStatus} component={Schedule} />
           <PrivateRoute path={this.props.app.routes.howToUse} access={authStatus} component={HowToUse} />
           <PrivateRoute path={this.props.app.routes.support} access={authStatus} component={Support} />
+          <PrivateRoute path={this.props.app.routes.singleGroup} access={authStatus} component={SingleGroup}/> 
           <Route
             path="/protected"
             component={Protected}
