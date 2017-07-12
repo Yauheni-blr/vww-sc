@@ -8,10 +8,12 @@ class UserStore {
   @observable authStatus
   @observable listOfGroups
   @observable singleGroup
+  @observable mySchedule
 
   constructor() {
     this.data = LocalStore.getUser()
     this.authStatus = LocalStore.getAuthStatus()
+    this.mySchedule = []
   }
 
   @action changeUserData(user, authStatus) {
@@ -68,6 +70,16 @@ class UserStore {
 
   @action setSingleGroup(group) {
     this.singleGroup = group
+  }
+
+  getSchedule(url) {
+    axios
+      .get(url)
+      .then(x => this.setSchedule(x.data))
+  }
+
+  @action setSchedule(schedule) {
+    this.mySchedule = schedule
   }
 }
 
