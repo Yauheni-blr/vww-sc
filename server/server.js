@@ -53,7 +53,7 @@ var groupsForTest = [
 ]
 
 app.get('/', getGroups)
-app.get('/:name', getSingleGroup)
+app.get('/my-groups/:name', getSingleGroup)
 app.get('/user', userHandler)
 app.get('/user/:name', nameHandler)
 

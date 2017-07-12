@@ -22,12 +22,12 @@ class AppStore extends Config {
       login: ''
     }
     this.routes = {
-      myGroups: '/',
+      myGroups: '/my-groups',
+      singleGroup: '/my-groups/:name',
       mySchedule: '/my-schedule',
       howToUse: '/how-to-use',
       support: '/support',
-      protected: '/protected',
-      singleGroup: '/:name'
+      protected: '/protected'
     }
     this.currentUrl = ''
   }

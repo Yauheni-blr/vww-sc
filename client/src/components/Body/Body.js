@@ -35,11 +35,11 @@ export default class Body extends Component {
       <div className="app__body">
         <div className="app__body__content">
           <PrivateRoute exact path={this.props.app.routes.myGroups} access={authStatus} component={Groups} />
-          <PrivateRoute path={this.props.app.routes.mySchedule} access={authStatus} component={Schedule} />
-          <PrivateRoute path={this.props.app.routes.howToUse} access={authStatus} component={HowToUse} />
-          <PrivateRoute path={this.props.app.routes.support} access={authStatus} component={Support} />
-          <PrivateRoute path={this.props.app.routes.singleGroup} access={authStatus} component={SingleGroup}/> 
-          <Route
+          <PrivateRoute exact path={this.props.app.routes.mySchedule} access={authStatus} component={Schedule} />
+          <PrivateRoute exact path={this.props.app.routes.singleGroup} access={authStatus} component={SingleGroup}/> 
+          <Route exact path={this.props.app.routes.howToUse} component={HowToUse} />
+          <Route exact path={this.props.app.routes.support} access={true} component={Support} />
+          <Route exact
             path="/protected"
             component={Protected}
           />

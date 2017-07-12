@@ -1,12 +1,12 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import './GroupsItem.css'
 
 export const GroupsItem = inject('app', 'user')(observer(props =>
   <li className="app__body__content__groups__list-item">
-    <Link className={`${props.classPref}-item__link`} to={props.groupName}>
+    <NavLink exact className={`${props.classPref}-item__link`} to={`${props.pathPref}/${props.groupName}`}>
       <div className={`${props.classPref}-item__link__head`}>
         <span className={`${props.classPref}-item__link__head-title`}>
           {props.department}
@@ -17,7 +17,7 @@ export const GroupsItem = inject('app', 'user')(observer(props =>
           {props.groupName}
         </span>
       </div>
-    </Link>
+    </NavLink>
   </li>
 ))
 

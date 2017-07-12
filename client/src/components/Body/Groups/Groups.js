@@ -25,6 +25,7 @@ export default class Groups extends Component {
                     groupName={group.groupName}
                     classPref="app__body__content__groups__list"
                     key={i}
+                    pathPref={this.props.location.pathname}
                   /> 
                 )
               : null
