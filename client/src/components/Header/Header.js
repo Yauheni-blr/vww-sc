@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, NavLink } from 'react-router-dom'
 
 import { MenuItem } from './MenuItem/MenuItem'
  
@@ -24,14 +24,6 @@ class Header extends Component {
       }
     ]
 
-    this.unLoggedPrimaryList = [
-      {
-        type: 'menuItem',
-        purpose: 'projectName',
-        title: this.props.app.projectName
-      }
-    ]
-
     this.loggedSideList = [
       {
         type: 'menuItem',
@@ -52,6 +44,16 @@ class Header extends Component {
 
     this.unLoggedSideList = [
       {
+        type: 'menuItem',
+        title: 'How to use?',
+        url: this.props.app.routes.howToUse
+      },
+      {
+        type: 'menuItem',
+        title: 'Support',
+        url: this.props.app.routes.support
+      },
+      {
         type: 'btn',
         title: 'Log In',
         cb: this.handleLogInBtn.bind(this)
@@ -65,6 +67,15 @@ class Header extends Component {
           <div className="app__header__menu">
             <div className="app__header__menu__primary">
               <ul className="app__header__menu__primary__list">
+                <li className="app__header__menu__primary__list-item">
+                  <NavLink
+                    exact
+                    className="app__header__menu__primary__list-item__projectName"
+                    to={this.props.app.routes.home}
+                  >
+                    {this.props.app.projectName}
+                  </NavLink>
+                </li>
                 {
                   this.props.user.data.email
                     ? this.loggedPrimaryList
@@ -76,16 +87,7 @@ class Header extends Component {
                           classPref="app__header__menu__primary__list"
                           url={item.url}
                         />)
-                    : this.unLoggedPrimaryList
-                      .map((item, i) =>
-                        <MenuItem 
-                          title={item.title}
-                          type={item.type}
-                          key={i}
-                          classPref="app__header__menu__primary__list"
-                          purpose={item.purpose}
-                        />
-                      )
+                    : null
                 }
               </ul>
             </div>

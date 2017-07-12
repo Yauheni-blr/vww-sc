@@ -1,24 +1,57 @@
 import React, { Component } from 'react'
 import { inject } from 'mobx-react' 
 
+import SupportItem from './SupportItem/SupportItem'
+
 import './Support.css'
 
-@inject('app')
+@inject('app', 'user')
 export default class Support extends Component {
   componentDidMount() {
     this.props.app.setCurrentRoute(this.props.location.pathname)
+
+    if (this.props.user.authStatus)
+      this.initUserData()
   }
   
   constructor() {
     super()
-
+    
     this.state = {
-      nameInput: '',
-      surnameInput: '',
-      emailInput: '',
-      desriptionInput: ''
+      name: '',
+      surname: '',
+      email: '',
+      problem: ''
     }
+
+    this.listOfFields = [
+      {
+        label: 'name',
+        type: 'text',
+        placeholder: 'John',
+        cb: x => this.setState({name: x.target.value})
+      },
+      {
+        label: 'surname',
+        type: 'text',
+        placeholder: 'Doe',
+        cb: x => this.setState({surname: x.target.value})
+      },
+      {
+        label: 'email',
+        type: 'email',
+        placeholder: 'john.doe@gmail.com',
+        cb: x => this.setState({email: x.target.value})
+      },
+      {
+        placeholder: 'Don\'t work something',
+        rows: '5',
+        cb: x => this.setState({problem: x.target.value})
+      }
+    ]
+
     this.handleFeedbackClick = this.handleFeedbackClick.bind(this)
+    this.initUserData = this.initUserData.bind(this)
   }
 
   render() {
@@ -39,48 +72,15 @@ export default class Support extends Component {
               </div>
             </div>
             <div className="app__body__content__support__feedbackform__content__feedback">
-              <div className="app__body__content__support__feedbackform__content__feedback__item">
-                <label>Name:</label>
-                <input
-                  className="app__body__content__support__feedbackform__content__feedback__item-field"
-                  type="text"
-                  name="feedback__name"
-                  value={this.state.nameInput}
-                  placeholder="Your name"
-                  onChange={x => this.setState({nameInput: x.target.value})}/>
-              </div>
-
-              <div className="app__body__content__support__feedbackform__content__feedback__item">
-                <label>Surname:</label>
-                <input
-                  className="app__body__content__support__feedbackform__content__feedback__item-field"
-                  type="text"
-                  name="feedback__surname"
-                  value={this.state.surnameInput}
-                  placeholder="Your surname"
-                  onChange={x => this.setState({surnameInput: x.target.value})}/>
-              </div>
-
-              <div className="app__body__content__support__feedbackform__content__feedback__item">
-                <label>E-mail:</label>
-                <input
-                  className="app__body__content__support__feedbackform__content__feedback__item-field"
-                  type="email"
-                  name="feedback__email"
-                  value={this.state.emailInput}
-                  placeholder="Your e-mail"
-                  onChange={x => this.setState({emailInput: x.target.value})}/>
-              </div>
-
-              <div className="app__body__content__support__feedbackform__content__feedback__item">
-                <textarea
-                  className="app__body__content__support__feedbackform__content__feedback__item-field"
-                  rows="5"
-                  value={this.state.desriptionInput}
-                  onChange={x => this.setState({desriptionInput: x.target.value})}
-                  placeholder="Describe your problem">
-                </textarea>
-              </div>
+              {
+                this.listOfFields.map((item, i) =>
+                  <SupportItem
+                    {...item}
+                    value={this.state[item.label]}
+                    key={i}
+                  />
+                )
+              }
 
               <div className="app__body__content__support__feedbackform__content__feedback__item">
                 <button
@@ -97,16 +97,24 @@ export default class Support extends Component {
     )
   }
 
-    handleFeedbackClick() {
-      const self = this;
+  initUserData() {
+    this.setState({
+      name: this.props.user.data.name,
+      surname: this.props.user.data.surname,
+      email: this.props.user.data.email,
+    })
+  }
 
-      const requestBody = {
-        name: self.state.nameInput,
-        surname: self.state.surnameInput,
-        email: self.state.emailInput,
-        desription: self.state.desriptionInput
-      }
+  handleFeedbackClick() {
+    const self = this;
 
-      console.log(requestBody);
+    const requestBody = {
+      name: self.state.name,
+      surname: self.state.surname,
+      email: self.state.email,
+      desription: self.state.problem
+    }
+
+    console.log(requestBody);
   }
 }

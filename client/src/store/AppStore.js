@@ -17,17 +17,18 @@ class AppStore extends Config {
       showCase: true, // true: SignIn | false: SignUp
       addStyle: {}
     }
-    this.projectName = "cool project"
+    this.projectName = "VSLA"
     this.error = {
       login: ''
     }
     this.routes = {
-      myGroups: '/',
+      home: '/',
+      myGroups: '/my-groups',
+      singleGroup: '/my-groups/:name',
       mySchedule: '/my-schedule',
       howToUse: '/how-to-use',
       support: '/support',
-      protected: '/protected',
-      singleGroup: '/:name'
+      protected: '/protected'
     }
     this.currentUrl = ''
   }

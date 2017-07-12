@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import DevTools from 'mobx-react-devtools'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { observer, inject } from 'mobx-react'
 
 import Header from './Header/Header'
 import Body from './Body/Body'
 import { Footer } from './Footer/Footer'
 import { Modal } from './Modal/Modal'
-
-import { observer, inject } from 'mobx-react'
 
 import './App.css'
 

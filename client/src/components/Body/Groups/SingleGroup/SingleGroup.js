@@ -9,14 +9,14 @@ export default class SingleGroup extends Component {
     if (!this.props.user.listOfGroups)
       this.props.user.getSingleGroup(this.props.app.ORIGIN + this.props.location.pathname)
     else {
-      const group = this.props.user.listOfGroups.find(group => this.props.location.pathname.substring(1) === group.groupName)
+      const group = this.props.user.listOfGroups.find(group => this.props.match.params.name === group.groupName)
       this.props.user.setSingleGroup(group)
     }
   }
  
   render() {
     return (
-      <h1>
+      <div>
         {
           this.props.user.singleGroup
             ? <div>
@@ -25,8 +25,7 @@ export default class SingleGroup extends Component {
               </div>
             : null
         }
-      </h1>
+      </div>
     )
   }
-
 }

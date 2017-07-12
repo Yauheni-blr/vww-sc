@@ -85,8 +85,7 @@ var scheduleForTest = [
 
 app.get('/', getGroups)
 app.get('/my-schedule', getSchedule)
-
-app.get('/:name', getSingleGroup)
+app.get('/my-groups/:name', getSingleGroup)
 app.get('/user', userHandler)
 app.get('/user/:name', nameHandler)
 

@@ -25,12 +25,10 @@
   border: none;
 }
 
-
 .app__header__menu__side__list-item__link,
 .app__header__menu__primary__list-item__link {
   text-decoration: none;
   color: #e0fdff;
-  margin-right: 20px;
   border-top: 4px solid transparent;
   padding-top: 5px; 
   transition: all .3s;
