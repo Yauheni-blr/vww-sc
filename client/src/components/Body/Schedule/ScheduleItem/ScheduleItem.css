@@ -1,0 +1,76 @@
+.app__body__content__schedule__list-item {
+  display: flex;
+  border-bottom: 1px solid #bfbfbf;
+  border-image: initial;
+  justify-content: space-between;
+  color: #1a7071;
+  background: #e2e2e2;
+  padding: 5px 20px;
+
+}
+
+
+.app__body__content__schedule__list-item:hover {
+  background: rgba(90, 158, 100, 0.26);
+  color: black;
+}
+
+.app__body__content__schedule__list-item:nth-child(odd) {
+  background: rgb(210, 210, 210);
+  color: black;
+}
+
+.app__body__content__schedule__list-item:nth-child(odd):hover {
+  background: rgba(90, 158, 100, 0.26);
+}
+
+.app__body__content__schedule__list-item__left {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  align-items: flex-start;
+}
+
+.app__body__content__schedule__list-item__left__title {
+  display: flex;
+  flex-direction: column;
+}
+
+.app__body__content__schedule__list-item__left__separator {
+  margin: 0 8px;
+  display: flex;
+  flex-direction: column;
+  color: #009fab;
+}
+
+.app__body__content__schedule__list-item__left__value {
+  display: flex;
+  flex-direction: column;
+}
+
+.app__body__content__schedule__list-item__right {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+}
+
+.app__body__content__schedule__list-item__right__title {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.app__body__content__schedule__list-item__right__separator {
+  margin: 0 8px;
+  display: flex;
+  flex-direction: column;
+  color: #009fab;
+  justify-content: space-between;
+}
+
+.app__body__content__schedule__list-item__right__value {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
