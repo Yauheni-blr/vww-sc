@@ -14,12 +14,13 @@
 
 .app__header__menu__primary__list-item__projectName {
   letter-spacing: 2px;
-  font-family: monospace;
+  font-family: avenir next;
   font-size: 30px;
   text-decoration: none;
-  color: #00b6c3;
-  transition: all .5s;
-  text-shadow: 8px 8px 4px #00b6c3;
+  font-weight: 800;
+  color: #00a6b1;
+  transition: all .4s;
+  text-shadow: 3px 3px 0px #e2e2e2;
 }
 
 .app__header__menu__primary__list-item__projectName:hover {

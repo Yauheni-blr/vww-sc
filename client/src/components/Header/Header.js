@@ -127,7 +127,7 @@ class Header extends Component {
   handleLogOutBtn() {
     this.props.user.resetUser()
     this.props.history.go(0)
-    this.props.history.replace('/protected')
+    this.props.history.replace('/')
     console.log(this.props.history)
   }
 

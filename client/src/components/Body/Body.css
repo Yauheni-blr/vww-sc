@@ -1,6 +1,9 @@
 .app__body {
   display: flex;
   flex: 1;
+  background-image: url('./vistula_logo.png');
+  background-repeat: no-repeat;
+  background-position: 50%;
 }
 
 .app__body__content {

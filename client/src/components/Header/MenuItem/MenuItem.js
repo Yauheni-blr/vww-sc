@@ -19,13 +19,14 @@ export const MenuItem = inject('app', 'user')(observer(props =>
   >
     {
       props.type === 'menuItem'
-        ? <NavLink
-            exact
-            className={getActiveClass(props.app.currentRoute, props.url, classNames.LINK)}
-            to={props.url}
-          >
-            {props.title}
-          </NavLink>
+        ? props.purpose
+            ? <span className={`${props.classPref}-item__projectName-item`}>{props.title}</span>
+            : <NavLink 
+                className={getActiveClass(props.app.currentRoute, props.url, classNames.LINK)}
+                to={props.url}
+              >
+                {props.title}
+              </NavLink>
         : <button className="app__header__menu__auth-item" onClick={props.cb}>
             {props.title}
           </button>

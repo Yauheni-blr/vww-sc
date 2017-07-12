@@ -1,8 +1,7 @@
 .app__body__content__support {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 40px
+  display: flex;  
+  justify-content: center;
+  margin: 40px;
 }
 
 .app__body__content__support__feedbackform {
