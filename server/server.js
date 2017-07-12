@@ -52,7 +52,39 @@ var groupsForTest = [
   }
 ]
 
+var scheduleForTest = [
+  {
+    date: '12.07.2017',
+    time: '9:00',
+    classRoom: 'A4',
+    groupName: 'TR-S3ES',
+    subjectName: 'Math for Informatics'
+  },
+  {
+    date: '12.07.2017',
+    time: '10:00',
+    classRoom: 'A2',
+    groupName: 'TP-A3IE',
+    subjectName: 'Math for Economics'
+  },
+  {
+    date: '12.07.2017',
+    time: '12:00',
+    classRoom: '313',
+    groupName: 'PR-Q4WP',
+    subjectName: 'Math for Math'
+  },
+  {
+    date: '12.07.2017',
+    time: '17:00',
+    classRoom: '116',
+    groupName: 'UV-S3ES',
+    subjectName: 'Java lessons'
+  }
+]
+
 app.get('/', getGroups)
+app.get('/my-schedule', getSchedule)
 app.get('/my-groups/:name', getSingleGroup)
 app.get('/user', userHandler)
 app.get('/user/:name', nameHandler)
@@ -63,6 +95,7 @@ app.post('/auth', authUser)
 app.put('/user/:email', updateUser)
 
 app.delete('/user/:email', deleteUser)
+
 
 app.listen(3001, function () {
   console.log('Example app listening on port 3001!');
@@ -78,6 +111,10 @@ function getSingleGroup(req, res) {
   const group = groupsForTest.find(group => group.groupName === unicName)
 
   res.send(group)
+}
+
+function getSchedule(req, res) {
+  res.send(scheduleForTest)
 }
 
 function userHandler(req, res) {
