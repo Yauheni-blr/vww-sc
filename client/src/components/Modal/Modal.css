@@ -73,16 +73,6 @@
   text-align: right;
 }
 
-.authModal__content__form__body__item__block-link {
-  font-size: 13px;
-  color: #00adb9;
-  transition: color .3s;
-}
-
-.authModal__content__form__body__item__block-link:hover {
-  color: #ffffff;
-}
-
 .authModal__content__form__body__item-button {
   background-color: #005359;
   border: 1px solid #ffffff;
