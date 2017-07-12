@@ -7,11 +7,24 @@
   box-shadow: 0 0 29px 0 rgba(0,0,0,0.6);
 }
 
+.app__header__menu__primary__list-item,
+.app__header__menu__side__list-item {
+  margin-right: 20px;
+}
+
 .app__header__menu__primary__list-item__projectName {
   letter-spacing: 2px;
   font-family: monospace;
-  font-weight: lighter;
-  font-size: 22px;
+  font-size: 30px;
+  text-decoration: none;
+  color: #00b6c3;
+  transition: all .5s;
+  text-shadow: 8px 8px 4px #00b6c3;
+}
+
+.app__header__menu__primary__list-item__projectName:hover {
+  color: #00eeff;
+  text-shadow: none;
 }
 
 .app__header__menu__auth-item {
