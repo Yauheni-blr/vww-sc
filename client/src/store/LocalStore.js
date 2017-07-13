@@ -1,11 +1,5 @@
 class LocalStore {
   constructor() {
-    this.userModel = {
-      name: '',
-      surname: '',
-      email: '',
-      department: ''
-    }
     this.user = this.initUser()
     this.authStatus = this.initAuthStatus()
   }
@@ -41,12 +35,12 @@ class LocalStore {
     if (this.getUser())
       return this.getUser()
       
-    localStorage.setItem('user', JSON.stringify(this.userModel))
+    localStorage.setItem('user', JSON.stringify({}))
   }
 
   resetUser() {
-    this.setUser(this.userModel)
-    return this.userModel
+    this.setUser({})
+    return {}
   }
 }
 
