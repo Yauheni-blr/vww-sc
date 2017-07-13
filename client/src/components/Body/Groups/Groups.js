@@ -8,7 +8,7 @@ import './Groups.css'
 @inject('app', 'user') @observer 
 export default class Groups extends Component {
   componentDidMount() {
-    this.props.user.getActiveGroups(`${this.props.app.ORIGIN}/`)
+    this.props.user.getActiveGroups(this.props.app.ORIGIN + this.props.app.routes.myGroups)
     this.props.app.setCurrentRoute(this.props.location.pathname)
   }
 

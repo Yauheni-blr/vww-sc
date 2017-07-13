@@ -13,12 +13,12 @@ const DB = {
 
 const CORS_OPTION = {
   client: CLIENT.ORIGIN,
-  optionSuccessStatus: 200
-} 
+  optionsSuccessStatus: 200
+}
 
 module.exports = {
   CLIENT,
   SERVER,
   DB,
-  CORS_OPTION
+  CORS_OPTION,
 }

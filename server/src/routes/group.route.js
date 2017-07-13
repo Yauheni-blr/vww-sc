@@ -44,11 +44,14 @@ var groupsForTest = [
 ]
 
 module.exports = function(app) {
-  app.get('/', getGroups)
+
+  app.get('/my-groups', getGroups)
   app.get('/my-groups/:name', getSingleGroup)
+  
 }
 
 function getGroups(req, res) {
+  console.log('All groups received successfully')
   res.send(groupsForTest)
 }
 
@@ -56,5 +59,6 @@ function getSingleGroup(req, res) {
   const unicName = req.params.name
   const group = groupsForTest.find(group => group.groupName === unicName)
 
+  console.log(`Single group: ${group.name} -> received successfully`)
   res.send(group)
 }
