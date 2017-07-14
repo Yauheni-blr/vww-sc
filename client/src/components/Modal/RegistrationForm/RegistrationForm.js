@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 
-import { withRouter } from 'react-router-dom' 
+import { withRouter } from 'react-router-dom'
 
 import './RegistrationForm.css'
 
@@ -9,13 +9,15 @@ import './RegistrationForm.css'
 class RegistrationForm extends Component {
   constructor(props) {
     super(props)
-    
+
     this.state = {
       name: '',
       surname: '',
       email: '',
       password: '',
-      department: 'IT'
+      department: 'IT',
+      secretQuestion: 'Mother\'s maiden name',
+      secretAnswer: ''
     }
 
     this.handleChangeForm = this.handleChangeForm.bind(this)
@@ -32,16 +34,16 @@ class RegistrationForm extends Component {
           </span>
         </div>
 
-        <div className="authModal__content__form__body"> 
+        <div className="authModal__content__form__body">
           <div className="authModal__content__form__body__item">
             <span className="authModal__content__form__body__item-requirements">
-              <span 
+              <span
                 className="authModal__content__form__body__item-requirements-ahtung"
               >
                 *
               </span>
-                email must be on 
-              <span 
+                email must be on
+              <span
                 className="authModal__content__form__body__item-requirements-domain"
               >
                 @vistula.edu.pl
@@ -49,32 +51,32 @@ class RegistrationForm extends Component {
                 domain
             </span>
           </div>
-           
+
           <div className="authModal__content__form__body__item">
             <label>Name:</label>
-            <input 
+            <input
               className="authModal__content__form__body__item-field"
-              type="text" 
+              type="text"
               placeholder="Your name"
               onChange={x => this.setState({name: x.target.value})}
             />
-          </div> 
+          </div>
 
           <div className="authModal__content__form__body__item">
             <label>Surname:</label>
-            <input 
+            <input
               className="authModal__content__form__body__item-field"
-              type="text" 
+              type="text"
               placeholder="Your surname"
               onChange={x => this.setState({surname: x.target.value})}
             />
           </div>
 
           <div className="authModal__content__form__body__item">
-            <label>email:</label>
-            <input 
+            <label>E-mail:</label>
+            <input
               className="authModal__content__form__body__item-field"
-              type="email" 
+              type="email"
               placeholder="Your email"
               onChange={x => this.setState({email: x.target.value})}
             />
@@ -83,7 +85,7 @@ class RegistrationForm extends Component {
           <div className="authModal__content__form__body__item">
             <label>Department:</label>
             <select
-              className="authModal__content__form__body__item-select"
+              className="authModal__content__form__body__item-field"
               value={this.state.department}
               onChange={x => this.setState({department: x.target.value})}
             >
@@ -94,22 +96,45 @@ class RegistrationForm extends Component {
           </div>
 
           <div className="authModal__content__form__body__item">
-            <label>Password</label>
-            <input 
+            <label>Password:</label>
+            <input
               className="authModal__content__form__body__item-field"
-              type="password" 
+              type="password"
               placeholder="Your password"
               onChange={x => this.setState({password: x.target.value})}
             />
           </div>
 
           <div className="authModal__content__form__body__item">
-            <label>Confirm password</label>
-            <input 
+            <label>Confirm password:</label>
+            <input
               className="authModal__content__form__body__item-field"
-              type="password" 
+              type="password"
               placeholder="Your password"
               onChange={x => this.setState({rPassword: x.target.value})}
+            />
+          </div>
+
+          <div className="authModal__content__form__body__item">
+            <label>Secret question:</label>
+            <select
+              className="authModal__content__form__body__item-field"
+              value={this.state.secretQuestion}
+              onChange={x => this.setState({secretQuestion: x.target.value})}
+            >
+              <option value="Mother's maiden name">Mother's maiden name</option>
+              <option value="Name of the best childhood friend">Name of the best childhood friend</option>
+              <option value="Your hometown">Your hometown</option>
+            </select>
+          </div>
+
+          <div className="authModal__content__form__body__item">
+            <label>Secret answer:</label>
+            <input
+              className="authModal__content__form__body__item-field"
+              type="text"
+              placeholder="Your answer"
+              onChange={x => this.setState({secretAnswer: x.target.value})}
             />
           </div>
 
@@ -153,7 +178,9 @@ class RegistrationForm extends Component {
       surname: self.state.surname,
       email: self.state.email,
       department: self.state.department,
-      password: self.state.password === self.state.rPassword ? self.state.password : ''
+      password: self.state.password === self.state.rPassword ? self.state.password : '',
+      secretQuestion: self.state.secretQuestion,
+      secretAnswer: self.state.secretAnswer
     }
 
     const waitResponse = new Promise((resolve, reject) => {
@@ -161,7 +188,7 @@ class RegistrationForm extends Component {
     })
 
     if ([requestBody.name, requestBody.surname, requestBody.email,
-         requestBody.department, requestBody.password].every(x => x.length > 0)) {
+         requestBody.department, requestBody.password, requestBody.secretQuestion, requestBody.secretAnswer].every(x => x.length > 0)) {
 
       waitResponse
         .then(data =>
@@ -172,7 +199,7 @@ class RegistrationForm extends Component {
             })
         )
     }
-    else console.log('Please fill all inputs')   
+    else console.log('Please fill all inputs')
   }
 }
 
