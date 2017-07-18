@@ -20,11 +20,12 @@
   position: relative;
   width: 400px;
   box-shadow: 0 0 29px 0 rgba(0,0,0,0.6);
+  overflow-y: auto;
 }
 
-.authModal__content-scrollable {
-  overflow-y: scroll;
-}
+  /*.authModal__content-scrollable {
+    overflow-y: scroll;
+  }*/
 
 .authModal__content__form {
   display: flex;

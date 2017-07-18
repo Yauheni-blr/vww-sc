@@ -27,7 +27,7 @@ class RegistrationForm extends Component {
 
   render() {
     return (
-      <div className="authModal__content__form">
+      <div className="authModal__content__form" ref={el => this.box = el}>
         <div className="authModal__content__form__header">
           <span className="authModal__content__form__header-title">
             Sing Up
@@ -85,7 +85,7 @@ class RegistrationForm extends Component {
           <div className="authModal__content__form__body__item">
             <label>Department:</label>
             <select
-              className="authModal__content__form__body__item-field"
+              className="authModal__content__form__body__item-select"
               value={this.state.department}
               onChange={x => this.setState({department: x.target.value})}
             >
@@ -118,7 +118,7 @@ class RegistrationForm extends Component {
           <div className="authModal__content__form__body__item">
             <label>Secret question:</label>
             <select
-              className="authModal__content__form__body__item-field"
+              className="authModal__content__form__body__item-select"
               value={this.state.secretQuestion}
               onChange={x => this.setState({secretQuestion: x.target.value})}
             >
