@@ -7,6 +7,7 @@ const userSchema = new Schema({
   surname: { type: String, required: true},
   email: { type: String, required: true, unique: true },
   department: { type: String, required: true},
+  attachedGroups: { type: Array, default: [] },
   password: { type: String, required: true},
   secretQuestion: { type: String, required: true},
   secretAnswer: { type: String, required: true, trim: true},
@@ -14,5 +15,6 @@ const userSchema = new Schema({
 })
 
 const User = mongoose.model('Users', userSchema)
+
 
 module.exports = User

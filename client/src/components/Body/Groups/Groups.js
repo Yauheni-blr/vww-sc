@@ -5,10 +5,17 @@ import { GroupsItem } from './GroupsItem/GroupsItem'
 
 import './Groups.css'
 
-@inject('app', 'user') @observer 
+@inject('app', 'group', 'user') @observer 
 export default class Groups extends Component {
   componentDidMount() {
-    this.props.user.getActiveGroups(this.props.app.ORIGIN + this.props.app.routes.myGroups)
+    if (this.props.user.data.attachedGroups.length)
+      this.props.group.getActiveGroups(
+        this.props.app.ORIGIN
+        + this.props.app.routes.myGroups
+        + `/${this.props.user.data.attachedGroups}`
+      )
+
+
     this.props.app.setCurrentRoute(this.props.location.pathname)
   }
 
@@ -17,12 +24,12 @@ export default class Groups extends Component {
       <div className="app__body__content__groups">
         <ul className="app__body__content__groups__list">
           {
-            this.props.user.listOfGroups
-              ? this.props.user.listOfGroups.map((group, i) => 
-                  <GroupsItem 
-                    type={group.type}
+            this.props.group.listOfGroups
+              ? this.props.group.listOfGroups.map((group, i) => 
+                  <GroupsItem
+                    id={group._id}
                     department={group.department}
-                    groupName={group.groupName}
+                    groupName={group.name}
                     classPref="app__body__content__groups__list"
                     key={i}
                     pathPref={this.props.location.pathname}

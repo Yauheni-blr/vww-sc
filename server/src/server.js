@@ -10,6 +10,7 @@ const initDb = require('./db') // Подключаемся к базе данн�
 const initUserRoute = require('./routes/user.route')  // Коробка для всех роутов связанных c User'ом
 const initGroupRoute = require('./routes/group.route') // Коробка для всех роутов связанных c Group'ами
 const initScheduleRoute = require('./routes/schedule.route') //Коробка для всех роутов связанных c Schedule'ом
+const initStudentRoute = require('./routes/student.route')  // Коробка для всех роутов связанных c Student'ом
 
     //-----------------------
 
@@ -27,6 +28,7 @@ initDb(mongoose, config) // инициализация бд
 initUserRoute(app) // Инициализация роутов связанных с User'ом
 initGroupRoute(app) // Инициализация роутов связанных с Group'ами
 initScheduleRoute(app) // Инициализация роутов связанных с Schedule'ом
+initStudentRoute(app) // Инициализация роутов связанных с Student'ом
 
 // Lounch server
 app.listen(3001, function () {  // Запускаем сервер на 3001 порте
