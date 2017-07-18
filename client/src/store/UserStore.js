@@ -6,8 +6,6 @@ import LocalStore from './LocalStore'
 class UserStore {
   @observable data
   @observable authStatus
-  @observable listOfGroups
-  @observable singleGroup
   @observable mySchedule
 
   constructor() {
@@ -54,22 +52,6 @@ class UserStore {
 
   @computed get getFullName() {
     return `${this.data.name} ${this.data.surname}`
-  }
-
-  getActiveGroups(url) {
-     axios
-      .get(url)
-      .then(action(x => this.listOfGroups = x.data))
-  }
-
-  getSingleGroup(url) {
-    axios
-      .get(url)
-      .then(x => this.setSingleGroup(x.data))
-  }
-
-  @action setSingleGroup(group) {
-    this.singleGroup = group
   }
 
   getSchedule(url) {

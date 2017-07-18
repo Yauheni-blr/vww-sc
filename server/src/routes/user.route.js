@@ -5,16 +5,15 @@ const { crypt } =  require('../utils/utils')
 
 module.exports = function(app) {
 
-  // app.get('/user', getListOfUsers)
-  // app.get('/user/:name', getSingleUser)
+  app.get('/user', getListOfUsers)
+  app.get('/user/:id', getSingleUser)
 
   app.post('/user', createUser)
   app.post('/auth', authUser)
 
-  // app.put('/user/:email', updateUser)
+  app.put('/user/:id', updateUser)
 
-  // app.delete('/user/:email', deleteUser)
-
+  app.delete('/user/:id', deleteUser)
 }
 
 // create user
@@ -60,7 +59,8 @@ function authUser(req, res) {
             surname: payload.surname,
             email: payload.email,
             department: payload.department,
-            secretQuestion: payload.secretQuestion
+            secretQuestion: payload.secretQuestion,
+            attachedGroups: payload.attachedGroups
           })
         } else {
           res.status(200).send('Wrong password')
@@ -69,5 +69,37 @@ function authUser(req, res) {
     } else {
       res.status(200).send('Wrong email')
     }
+  })
+}
+
+// Get List Of Users
+function getListOfUsers(req, res) {
+  User.find({}, function(err, payload) {
+    if(payload) {
+      res.send(payload)
+    }
+  })
+}
+
+// Get Single User
+function getSingleUser(req, res) {
+  User.findOne({ _id: req.params.id }, function(err, payload) {
+    if(payload) {
+      res.send(payload)
+    }
+  })
+}
+
+// Update User
+function updateUser(req, res) {
+  User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }, function(err, payload) {
+    res.send(payload)
+  })
+}
+
+// Delete User
+function deleteUser(req, res) {
+  User.findOneAndRemove({ _id: req.params.id }, function(err, payload) {
+    res.send(`User with email: ${payload.email} successfuly deleted`)
   })
 }

@@ -60,9 +60,7 @@ var scheduleForTest = [
 ]
 
 module.exports = function(app) {
-
   app.get('/my-schedule', getSchedule)
-
 }
 
 function getSchedule(req, res) {
