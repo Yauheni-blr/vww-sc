@@ -20,6 +20,7 @@ export class Modal extends Component {
 
     this.state = {}
     this.compareWindowAndModalSize = this.compareWindowAndModalSize.bind(this)
+    this.checkModalHeight = this.checkModalHeight.bind(this)
   }
 
   render() {
@@ -39,7 +40,8 @@ export class Modal extends Component {
           className={
             this.compareWindowAndModalSize()
               ? 'authModal__content'
-              : 'authModal__content authModal__content-scrollable'}
+              : 'authModal__content authModal__content-scrollable'
+          }
           ref={el => this.box = el}
           style={{
             height: this.compareWindowAndModalSize()
@@ -50,12 +52,16 @@ export class Modal extends Component {
 
         {
           this.props.app.showLogRegModal.showCase
-            ? <LoginForm/>
-            : <RegistrationForm />
+            ? <LoginForm cb={this.checkModalHeight} />
+            : <RegistrationForm cb={this.checkModalHeight} />
         }
         </div>
       </div>
     )
+  }
+
+  checkModalHeight(value) {
+    this.setState({modalHeight: value})
   }
 
   compareWindowAndModalSize() {
