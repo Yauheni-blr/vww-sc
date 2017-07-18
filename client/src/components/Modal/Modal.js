@@ -17,7 +17,7 @@ export class Modal extends Component {
 
   constructor() {
     super()
-    
+
     this.state = {}
     this.compareWindowAndModalSize = this.compareWindowAndModalSize.bind(this)
   }

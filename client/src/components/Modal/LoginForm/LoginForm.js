@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react'
 
-import { withRouter } from 'react-router-dom' 
+import { withRouter } from 'react-router-dom'
 
 import './LoginForm.css';
 
@@ -9,7 +9,7 @@ import './LoginForm.css';
 class LoginForm extends Component {
   constructor() {
     super()
-    
+
     this.state = {
       emailInput: '',
       passInput: ''
@@ -21,7 +21,7 @@ class LoginForm extends Component {
 
   render() {
     return(
-      <div className="authModal__content__form">
+      <div className="authModal__content__form" ref={el => this.box = el}>
         <div className="authModal__content__form__header">
           <span className="authModal__content__form__header-title">
             Log in
