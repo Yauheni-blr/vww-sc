@@ -7,6 +7,10 @@ import './RegistrationForm.css'
 
 @inject('app', 'user') @observer
 class RegistrationForm extends Component {
+  componentDidMount() {
+    this.props.cb(this.box.offsetHeight)
+  }
+  
   constructor(props) {
     super(props)
 
@@ -96,26 +100,6 @@ class RegistrationForm extends Component {
           </div>
 
           <div className="authModal__content__form__body__item">
-            <label>Password:</label>
-            <input
-              className="authModal__content__form__body__item-field"
-              type="password"
-              placeholder="Your password"
-              onChange={x => this.setState({password: x.target.value})}
-            />
-          </div>
-
-          <div className="authModal__content__form__body__item">
-            <label>Confirm password:</label>
-            <input
-              className="authModal__content__form__body__item-field"
-              type="password"
-              placeholder="Your password"
-              onChange={x => this.setState({rPassword: x.target.value})}
-            />
-          </div>
-
-          <div className="authModal__content__form__body__item">
             <label>Secret question:</label>
             <select
               className="authModal__content__form__body__item-select"
@@ -136,6 +120,26 @@ class RegistrationForm extends Component {
               placeholder="Your answer"
               onChange={x => this.setState({secretAnswer: x.target.value})}
             />
+          </div>
+
+          <div className="authModal__content__form__body__item">
+          <label>Password:</label>
+          <input
+          className="authModal__content__form__body__item-field"
+          type="password"
+          placeholder="Your password"
+          onChange={x => this.setState({password: x.target.value})}
+          />
+          </div>
+
+          <div className="authModal__content__form__body__item">
+          <label>Confirm password:</label>
+          <input
+          className="authModal__content__form__body__item-field"
+          type="password"
+          placeholder="Your password"
+          onChange={x => this.setState({rPassword: x.target.value})}
+          />
           </div>
 
           <div className="authModal__content__form__body__item">

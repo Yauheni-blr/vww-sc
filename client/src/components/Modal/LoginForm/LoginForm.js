@@ -7,6 +7,10 @@ import './LoginForm.css';
 
 @inject('app', 'user') @observer
 class LoginForm extends Component {
+  componentDidMount() {
+    this.props.cb(this.box.offsetHeight)
+  }
+
   constructor() {
     super()
 

@@ -23,10 +23,6 @@
   overflow-y: auto;
 }
 
-  /*.authModal__content-scrollable {
-    overflow-y: scroll;
-  }*/
-
 .authModal__content__form {
   display: flex;
   flex-direction: column;
