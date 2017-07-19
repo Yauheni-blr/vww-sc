@@ -5,6 +5,11 @@ import axios from 'axios'
 class GroupStore {
   @observable listOfGroups
   @observable singleGroup
+  @observable listOfStudents
+
+  constructor() {
+    this.listOfStudents = []
+  }
 
   getActiveGroups(url) {
      axios
@@ -12,10 +17,25 @@ class GroupStore {
       .then(action(x => this.listOfGroups = x.data))
   }
 
-  getSingleGroup(url) {
+  getSingleGroup(origin, route) {
     axios
-      .get(url)
+      .get(origin + route)
       .then(x => this.setSingleGroup(x.data))
+      .then(() => {
+        if (this.singleGroup.attachedStudents.length) {
+          axios
+            .get(origin + '/my-students/' + this.singleGroup.attachedStudents)
+            .then(x => this.setListOfStudents(x.data))
+        }
+      })
+  }
+
+  @action setListOfStudents(students) {
+    this.listOfStudents = students
+  }
+
+  @action resetListOfStudents() {
+    this.listOfStudents = []
   }
 
   @action setSingleGroup(group) {

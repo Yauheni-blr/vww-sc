@@ -9,16 +9,13 @@ import App from './components/App'
 import AppStore from './store/AppStore'
 import UserStore from './store/UserStore'
 import GroupStore from './store/GroupStore'
-import StudentStore from './store/StudentStore'
-
 
 import './index.css'
 
 const store = {
   app: AppStore,
   user: UserStore,
-  group: GroupStore,
-  student: StudentStore
+  group: GroupStore
 }
 
 mobxUseStrict(true)
